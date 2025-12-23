@@ -1,65 +1,81 @@
-import Image from "next/image";
+import OfferForm from '@/components/forms/OfferForm';
+import OfferList from '@/components/forms/OfferList';
+import ComparisonChart from '@/components/charts/ComparisonChart';
+import DetailedComparison from '@/components/forms/DetailedComparison';
+import { ShieldCheck, LayoutDashboard } from 'lucide-react';
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <main className="min-h-screen bg-[#f8fafc] py-12 px-4 md:px-8">
+      <div className="max-w-7xl mx-auto space-y-10">
+        
+        {/* 顶部状态栏与标题 */}
+        <header className="flex flex-col md:flex-row md:items-end justify-between gap-4">
+          <div className="space-y-2">
+            <div className="inline-flex items-center gap-2 bg-indigo-50 border border-indigo-100 text-indigo-600 px-3 py-1 rounded-full">
+              <ShieldCheck className="w-4 h-4" />
+              <span className="text-xs font-bold uppercase tracking-wider">Privacy-First AI Analyst</span>
+            </div>
+            <h1 className="text-5xl font-black text-slate-900 tracking-tight">
+              Offer <span className="text-indigo-600 italic">Vision</span>
+            </h1>
+            <p className="text-slate-500 font-medium">
+              不仅看数字，更看清税后收益与资产积累。
+            </p>
+          </div>
+          
+          <div className="hidden md:flex items-center gap-6 text-sm text-slate-400 font-medium">
+            <div className="flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
+              2025 税法模型已激活
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-indigo-500"></span>
+              Gemini 1.5 Flash 驱动
+            </div>
+          </div>
+        </header>
+
+        {/* 主交互区域 */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+          
+          {/* 左侧：录入表单 (占 5 列) */}
+          <div className="lg:col-span-5 space-y-8">
+            <div className="sticky top-8">
+              <OfferForm />
+            </div>
+          </div>
+
+          {/* 右侧：图表与列表 (占 7 列) */}
+          <div className="lg:col-span-7 space-y-8">
+            <section className="space-y-6">
+              <div className="flex items-center gap-2 text-slate-800 font-bold text-lg">
+                <LayoutDashboard className="w-5 h-5 text-indigo-500" />
+                对比看板
+              </div>
+              
+              {/* 收益对比图表 */}
+              <ComparisonChart />
+
+              {/* Offer 摘要列表 */}
+              <OfferList />
+            </section>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+
+        {/* 底部：全宽详细财务对比表格 */}
+        <section className="pt-8 border-t border-slate-200">
+          <div className="max-w-full">
+            <DetailedComparison />
+          </div>
+        </section>
+
+        {/* 页脚说明 */}
+        <footer className="text-center py-12 text-slate-400 text-xs space-y-2">
+          <p>© 2025 AI Offer Comparator. 所有计算仅供参考，请以最终劳动合同为准。</p>
+          <p>数据本地存储：您的 Offer 信息从未离开过您的浏览器。</p>
+        </footer>
+      </div>
+    </main>
   );
 }
