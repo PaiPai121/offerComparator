@@ -1,0 +1,13 @@
+version: '3'
+services:
+  offer-vision:
+    build: .
+    ports:
+      - "3000:3000"
+    restart: always
+    environment:
+      - GOOGLE_GENERATIVE_AI_API_KEY=你的Gemini密钥 # 请替换为你真实的 API Key
+    deploy:
+      resources:
+        limits:
+          memory: 512M # 限制该容器最多使用 512MB，给系统留 512MB 余裕

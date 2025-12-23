@@ -3,7 +3,7 @@ import OfferList from '@/components/forms/OfferList';
 import ComparisonChart from '@/components/charts/ComparisonChart';
 import DetailedComparison from '@/components/forms/DetailedComparison';
 import { ShieldCheck, LayoutDashboard } from 'lucide-react';
-
+import AIAdvice from '@/components/AIAdvice'; // 1. 确保这里有引入
 export default function Home() {
   return (
     <main className="min-h-screen bg-[#f8fafc] py-12 px-4 md:px-8">
@@ -31,7 +31,7 @@ export default function Home() {
             </div>
             <div className="flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-indigo-500"></span>
-              Gemini 1.5 Flash 驱动
+              {/* Gemini 1.5 Flash 驱动 */}
             </div>
           </div>
         </header>
@@ -59,6 +59,10 @@ export default function Home() {
 
               {/* Offer 摘要列表 */}
               <OfferList />
+              
+              {/* 2. 关键：把 AI 建议放在详细对比表的下面 */}
+              <AIAdvice /> 
+
             </section>
           </div>
         </div>
@@ -72,7 +76,7 @@ export default function Home() {
 
         {/* 页脚说明 */}
         <footer className="text-center py-12 text-slate-400 text-xs space-y-2">
-          <p>© 2025 AI Offer Comparator. 所有计算仅供参考，请以最终劳动合同为准。</p>
+          <p>© 2025 Offer Comparator. 所有计算仅供参考，请以最终劳动合同为准。</p>
           <p>数据本地存储：您的 Offer 信息从未离开过您的浏览器。</p>
         </footer>
       </div>

@@ -75,7 +75,7 @@ export default function DetailedComparison() {
       </div>
       
       <div className="p-4 bg-slate-50 text-[10px] text-slate-400 italic">
-        * 注意：此计算未扣除股票行权个税。公积金按 12% 默认比例估算，社保基数上限设为 35,000。
+        * 注意：此计算未扣除股票行权个税。
       </div>
     </div>
   );
