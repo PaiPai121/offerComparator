@@ -1,83 +1,119 @@
+'use client'
+
+import React from 'react';
+import { useOfferStore } from '@/store/useOfferStore';
+import { DEMO_OFFERS } from '@/lib/demoData';
+
+// 导入所有核心组件
 import OfferForm from '@/components/forms/OfferForm';
 import OfferList from '@/components/forms/OfferList';
 import ComparisonChart from '@/components/charts/ComparisonChart';
 import DetailedComparison from '@/components/forms/DetailedComparison';
-import { ShieldCheck, LayoutDashboard } from 'lucide-react';
-import AIAdvice from '@/components/AIAdvice'; // 1. 确保这里有引入
+import AIAdvice from '@/components/AIAdvice';
+
+// 导入图标
+import { Sparkles, BarChart3, TrendingUp, Info } from 'lucide-react';
+
 export default function Home() {
+  const { offers, addOffer } = useOfferStore();
+
+  // 处理一键加载示例数据
+  const handleLoadDemo = () => {
+    // 为防止重复点击，先判断是否已经有数据
+    if (offers.length > 0) return;
+    DEMO_OFFERS.forEach(offer => addOffer(offer));
+  };
+
   return (
-    <main className="min-h-screen bg-[#f8fafc] py-12 px-4 md:px-8">
+    <main className="min-h-screen bg-[#f8fafc] py-8 px-4 md:px-8 lg:py-12">
       <div className="max-w-7xl mx-auto space-y-10">
         
-        {/* 顶部状态栏与标题 */}
-        <header className="flex flex-col md:flex-row md:items-end justify-between gap-4">
-          <div className="space-y-2">
-            <div className="inline-flex items-center gap-2 bg-indigo-50 border border-indigo-100 text-indigo-600 px-3 py-1 rounded-full">
-              <ShieldCheck className="w-4 h-4" />
-              <span className="text-xs font-bold uppercase tracking-wider">Privacy-First AI Analyst</span>
-            </div>
-            <h1 className="text-5xl font-black text-slate-900 tracking-tight">
-              Offer <span className="text-indigo-600 italic">Vision</span>
-            </h1>
-            <p className="text-slate-500 font-medium">
-              不仅看数字，更看清税后收益与资产积累。
-            </p>
-          </div>
-          
-          <div className="hidden md:flex items-center gap-6 text-sm text-slate-400 font-medium">
-            <div className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
-              2025 税法模型已激活
-            </div>
-            <div className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-indigo-500"></span>
-              {/* Gemini 1.5 Flash 驱动 */}
-            </div>
-          </div>
-        </header>
+        {/* 顶部标题与介绍 */}
+        <div className="text-center space-y-4">
+          <h1 className="text-4xl md:text-5xl font-black text-slate-900 tracking-tight">
+            Offer<span className="text-indigo-600">Vision</span>
+          </h1>
+          <p className="text-slate-500 text-lg max-w-2xl mx-auto">
+            不仅是算薪资，更是量化你的职业选择。基于 AI 深度解析，看清每一份 Offer 的真实含金量。
+          </p>
+        </div>
 
-        {/* 主交互区域 */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-          
-          {/* 左侧：录入表单 (占 5 列) */}
-          <div className="lg:col-span-5 space-y-8">
-            <div className="sticky top-8">
-              <OfferForm />
-            </div>
-          </div>
-
-          {/* 右侧：图表与列表 (占 7 列) */}
-          <div className="lg:col-span-7 space-y-8">
-            <section className="space-y-6">
-              <div className="flex items-center gap-2 text-slate-800 font-bold text-lg">
-                <LayoutDashboard className="w-5 h-5 text-indigo-500" />
-                对比看板
+        {/* 1. 空状态引导 Banner - 仅在没有任何 Offer 时显示 */}
+        {offers.length === 0 && (
+          <div className="relative overflow-hidden bg-slate-900 rounded-[2rem] p-8 md:p-12 text-white shadow-2xl transition-all hover:shadow-indigo-500/10">
+            <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-8">
+              <div className="space-y-4 text-center md:text-left">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/20 text-indigo-300 text-sm font-medium border border-indigo-500/30">
+                  <Sparkles className="w-4 h-4" /> 快速上手
+                </div>
+                <h2 className="text-3xl font-bold">还没有录入 Offer？</h2>
+                <p className="text-slate-400 max-w-md">
+                  你可以手动在下方填写，或者粘贴 Offer 文本让 AI 帮你解析。也可以先加载示例数据，看看对比效果。
+                </p>
               </div>
-              
-              {/* 收益对比图表 */}
+              <button 
+                onClick={handleLoadDemo}
+                className="group relative px-8 py-4 bg-indigo-600 hover:bg-indigo-500 text-white rounded-2xl font-bold transition-all hover:scale-105 active:scale-95 shadow-xl shadow-indigo-600/20"
+              >
+                加载示例数据体验
+              </button>
+            </div>
+            {/* 背景装饰 */}
+            <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/2 w-96 h-96 bg-indigo-600/20 rounded-full blur-[100px]" />
+            <div className="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/2 w-64 h-64 bg-purple-600/10 rounded-full blur-[80px]" />
+          </div>
+        )}
+
+        {/* 2. 主功能区 - 栅格布局 */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          
+          {/* 左侧：录入表单 (41.6% 宽度) */}
+          <div className="lg:col-span-5 sticky top-8">
+            <div className="bg-white rounded-[2rem] p-1 shadow-sm border border-slate-200">
+               <OfferForm />
+            </div>
+            
+            {/* 小贴士 */}
+            <div className="mt-6 flex items-start gap-3 p-4 bg-indigo-50 rounded-2xl border border-indigo-100 text-indigo-700 text-sm">
+              <Info className="w-5 h-5 shrink-0 mt-0.5" />
+              <p>数据仅存储在本地浏览器中，我们不会保存您的任何隐私信息。AI 解析功能需要配置 API Key。</p>
+            </div>
+          </div>
+
+          {/* 右侧：结果看板 (58.3% 宽度) */}
+          <div className="lg:col-span-7 space-y-8">
+            
+            {/* 图表卡片 */}
+            <div className="bg-white rounded-[2rem] p-6 md:p-8 shadow-sm border border-slate-200 min-h-[450px]">
+              <div className="flex items-center gap-2 mb-6 text-slate-800 font-bold text-xl">
+                <BarChart3 className="w-6 h-6 text-indigo-600" />
+                收益趋势对比 (4年)
+              </div>
               <ComparisonChart />
+            </div>
 
-              {/* Offer 摘要列表 */}
+            {/* 已录入列表 */}
+            <div className="bg-white rounded-[2rem] p-6 md:p-8 shadow-sm border border-slate-200">
+              <div className="flex items-center gap-2 mb-6 text-slate-800 font-bold text-xl">
+                <TrendingUp className="w-6 h-6 text-indigo-600" />
+                Offer 简报
+              </div>
               <OfferList />
-              
-              {/* 2. 关键：把 AI 建议放在详细对比表的下面 */}
-              <AIAdvice /> 
+            </div>
 
-            </section>
+            {/* 详细对比表格 */}
+            <div className="overflow-hidden">
+              <DetailedComparison />
+            </div>
+
+            {/* AI 建议区域 */}
+            <AIAdvice />
           </div>
         </div>
 
-        {/* 底部：全宽详细财务对比表格 */}
-        <section className="pt-8 border-t border-slate-200">
-          <div className="max-w-full">
-            <DetailedComparison />
-          </div>
-        </section>
-
-        {/* 页脚说明 */}
-        <footer className="text-center py-12 text-slate-400 text-xs space-y-2">
-          <p>© 2025 Offer Comparator. 所有计算仅供参考，请以最终劳动合同为准。</p>
-          <p>数据本地存储：您的 Offer 信息从未离开过您的浏览器。</p>
+{/* 底部版权/链接 */}
+<footer className="pt-12 pb-6 text-center text-slate-400 text-sm border-t border-slate-200">
+          <p>© 2025 OfferVision - 你的职场财务决策助手</p>
         </footer>
       </div>
     </main>
