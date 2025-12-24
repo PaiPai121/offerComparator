@@ -13,6 +13,7 @@ import AIAdvice from '@/components/AIAdvice';
 
 // 导入图标
 import { Sparkles, BarChart3, TrendingUp, Info } from 'lucide-react';
+import SharePoster from '@/components/SharePoster';
 
 export default function Home() {
   const { offers, addOffer } = useOfferStore();
@@ -106,6 +107,9 @@ export default function Home() {
               <DetailedComparison />
             </div>
 
+            {/* 新增：分享海报按钮 */}
+            <SharePoster />
+            
             {/* AI 建议区域 */}
             <AIAdvice />
           </div>
