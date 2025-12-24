@@ -1,36 +1,34 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🚀 OfferVision (niyabox.cc)
 
-## Getting Started
+![Hits](https://hits.dwyl.com/paipai121/offercomparator.svg?style=flat-square&show=true)
+![Stars](https://img.shields.io/github/stars/paipai121/offercomparator?style=flat-square)
+![License](https://img.shields.io/github/license/paipai121/offercomparator?style=flat-square)
 
-First, run the development server:
+> **"让每一份 Offer 的价值都清晰可见。"** > 基于 AI 的职场财务价值深度诊断工具。不仅计算月薪，更洞察未来 4 年的现金流与资产增值。
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+[查看在线演示: niyabox.cc](http://niyabox.cc)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### ✨ 核心特性
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **🤖 AI 智能解析**: 粘贴 Offer 文本或聊天记录，自动识别薪资结构（支持智谱 AI/DeepSeek）。
+- **📊 4年累计收益看板**: 自动生成 4 年现金流趋势图，直观对比不同 Offer 的长期“含金量”。
+- **📑 战报级海报生成**: 一键导出 HD 深度对比海报，包含 AI 专家建议、收入结构占比。
+- **⚖️ 金融级个税模型**: 内置 2025 最新中国个税及五险一金封顶基数计算逻辑。
 
-## Learn More
+### 🛠 技术栈
 
-To learn more about Next.js, take a look at the following resources:
+- **框架**: Next.js 15 (App Router)
+- **状态管理**: Zustand + Persist
+- **图表**: Recharts (数据可视化)
+- **渲染**: html-to-image (海报导出)
+- **AI 引擎**: 智谱 AI (GLM-4)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### 🚀 快速开始
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. **配置环境变量**:
+   在根目录创建 `.env.local`：
+   ```env
+   ZHIPU_AI_API_KEY=你的API密钥
+   ```

@@ -3,6 +3,23 @@ import { NextResponse } from "next/server";
 export async function POST(req: Request) {
   try {
     const { comparisonData } = await req.json();
+    if (comparisonData && Array.isArray(comparisonData)) {
+      comparisonData.forEach((offer: any) => {
+        const anonymousLog = {
+          timestamp: new Date().toISOString(),
+          type: 'SALARY_DATA_POINT',
+          company: offer.companyName || 'Anonymous',
+          monthly: offer.baseSalary?.monthly || 0,
+          months: offer.baseSalary?.monthsPerYear || 12,
+          bonusFixed: offer.bonus?.fixed || 0,
+          equityTotal: offer.equity?.totalValue || 0,
+          // 仅记录是否为手动输入基数，不记录具体基数数值以保护隐私
+          isManualInsurance: !!offer.insurance?.useManualBase 
+        };
+        // 该日志会出现在 Docker 或服务器运行日志中
+        console.log(`[DATA_INSIGHT] ${JSON.stringify(anonymousLog)}`);
+      });
+    }
     const apiKey = process.env.ZHIPU_AI_API_KEY;
 
     if (!apiKey) {
