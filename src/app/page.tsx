@@ -116,21 +116,53 @@ export default function Home() {
         </div>
 
         {/* 底部版权/链接 */}
-        <footer className="mt-20 pb-10 text-center space-y-4">
-        <div className="flex flex-col items-center gap-2">
-          <p className="text-slate-400 text-xs font-medium uppercase tracking-widest">
-            当前已有访问次数
-          </p>
-          {/* 网页显示的计数器图片 */}
-          <img 
-            src="https://visitor-badge.laobi.icu/badge?page_id=niyabox.cc&left_text=Total%20Visitors" 
-            alt="Visitors"
-            className="h-6"
-          />
+        <footer className="mt-24 pb-12 border-t border-slate-200 pt-12">
+        <div className="flex flex-col items-center space-y-6">
+          {/* 信任背书区 */}
+          <div className="flex flex-wrap justify-center items-center gap-4 px-6 py-3 bg-white rounded-2xl shadow-sm border border-slate-100">
+            <div className="flex flex-col items-center border-r border-slate-100 pr-4">
+              <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">平台累计探索</p>
+              <img 
+                src="https://visitor-badge.laobi.icu/badge?page_id=niyabox.cc&left_text=Total%20Scanned&color=4f46e5" 
+                alt="Visitors"
+                className="h-5"
+              />
+            </div>
+            <div className="flex flex-col items-center">
+              <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">最近 7 日趋势</p>
+              <img 
+                src="https://visitor-badge.laobi.icu/badge?page_id=niyabox.cc&history=7" 
+                alt="Trend"
+                className="h-5"
+              />
+            </div>
+          </div>
+
+          {/* 品牌导流 */}
+          <div className="text-center space-y-2">
+            <div className="flex items-center justify-center gap-2">
+              <div className="w-8 h-[2px] bg-slate-200" />
+              <h3 className="text-xl font-black text-slate-800 tracking-tighter">
+                Offer<span className="text-indigo-600">Vision</span>
+              </h3>
+              <div className="w-8 h-[2px] bg-slate-200" />
+            </div>
+            <p className="text-slate-500 text-xs font-medium">
+              基于 AI 的职场财务价值深度诊断工具 · 助力每一份职业选择
+            </p>
+          </div>
+
+          {/* 底部版权与域名 */}
+          <div className="flex flex-col items-center gap-2">
+            <div className="flex gap-6 text-[11px] font-bold text-slate-400 uppercase tracking-tight">
+              <a href="https://niyabox.cc" className="hover:text-indigo-600 transition-colors">NIYABOX.CC</a>
+              <a href="https://github.com/paipai121/offercomparator" className="hover:text-indigo-600 transition-colors tracking-tighter">GitHub Open Source</a>
+            </div>
+            <p className="text-slate-300 text-[9px] font-bold uppercase tracking-widest">
+              © 2025 Quantifying Professional Value
+            </p>
+          </div>
         </div>
-        <p className="text-slate-300 text-[10px] font-bold">
-          © 2025 OFFERVISION | NIYABOX.CC
-        </p>
       </footer>
       </div>
     </main>
