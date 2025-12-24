@@ -68,7 +68,7 @@ export default function Home() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           
           {/* 左侧：录入表单 (41.6% 宽度) */}
-          <div className="lg:col-span-5 sticky top-8">
+          <div className="lg:col-span-5 lg:sticky lg:top-8 z-10">
             <div className="bg-white rounded-[2rem] p-1 shadow-sm border border-slate-200">
                <OfferForm />
             </div>
