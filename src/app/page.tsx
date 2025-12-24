@@ -77,7 +77,7 @@ export default function Home() {
             {/* 小贴士 */}
             <div className="mt-6 flex items-start gap-3 p-4 bg-indigo-50 rounded-2xl border border-indigo-100 text-indigo-700 text-sm">
               <Info className="w-5 h-5 shrink-0 mt-0.5" />
-              <p>数据仅存储在本地浏览器中，我们不会保存您的任何隐私信息。AI 解析功能需要配置 API Key。</p>
+              <p>数据仅存储在本地浏览器中，我们不会保存您的任何隐私信息。</p>
             </div>
           </div>
 
