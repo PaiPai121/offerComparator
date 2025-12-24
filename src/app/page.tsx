@@ -119,7 +119,7 @@ export default function Home() {
         <footer className="mt-20 pb-10 text-center space-y-4">
         <div className="flex flex-col items-center gap-2">
           <p className="text-slate-400 text-xs font-medium uppercase tracking-widest">
-            当前已有次深度诊断探索
+            当前已有访问次数
           </p>
           {/* 网页显示的计数器图片 */}
           <img 
