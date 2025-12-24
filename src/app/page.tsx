@@ -115,10 +115,23 @@ export default function Home() {
           </div>
         </div>
 
-{/* 底部版权/链接 */}
-<footer className="pt-12 pb-6 text-center text-slate-400 text-sm border-t border-slate-200">
-          <p>© 2025 OfferVision - 你的职场财务决策助手</p>
-        </footer>
+        {/* 底部版权/链接 */}
+        <footer className="mt-20 pb-10 text-center space-y-4">
+        <div className="flex flex-col items-center gap-2">
+          <p className="text-slate-400 text-xs font-medium uppercase tracking-widest">
+            当前已有次深度诊断探索
+          </p>
+          {/* 网页显示的计数器图片 */}
+          <img 
+            src="https://visitor-badge.laobi.icu/badge?page_id=niyabox.cc&left_text=Total%20Visitors" 
+            alt="Visitors"
+            className="h-6"
+          />
+        </div>
+        <p className="text-slate-300 text-[10px] font-bold">
+          © 2025 OFFERVISION | NIYABOX.CC
+        </p>
+      </footer>
       </div>
     </main>
   );

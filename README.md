@@ -1,9 +1,7 @@
 # 🚀 OfferVision (niyabox.cc)
 
-![Hits](https://hits.dwyl.com/paipai121/offercomparator.svg?style=flat-square&show=true)
-![Stars](https://img.shields.io/github/stars/paipai121/offercomparator?style=flat-square)
-![License](https://img.shields.io/github/license/paipai121/offercomparator?style=flat-square)
-
+![Visitors](https://visitor-badge.laobi.icu/badge?page_id=niyabox.cc&left_text=Total%20Users&color=4f46e5)
+![Trend](https://visitor-badge.laobi.icu/badge?page_id=niyabox.cc&history=7)
 > **"让每一份 Offer 的价值都清晰可见。"** > 基于 AI 的职场财务价值深度诊断工具。不仅计算月薪，更洞察未来 4 年的现金流与资产增值。
 
 [查看在线演示: niyabox.cc](http://niyabox.cc)
