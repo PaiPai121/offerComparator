@@ -160,7 +160,7 @@ export default function Home() {
       
       {/* QQ 联系 - 替换为您的真实QQ号 */}
       <a 
-        href="tencent://message/?uin=您的QQ号&Site=niyabox.cc&Menu=yes" 
+        href="tencent://message/?uin=1040035659&Site=niyabox.cc&Menu=yes" 
         className="flex items-center gap-2 hover:text-indigo-600 transition-colors"
       >
         <span className="text-base">🐧</span> QQ 联系
