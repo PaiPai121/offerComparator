@@ -17,7 +17,17 @@ import SharePoster from '@/components/SharePoster';
 
 export default function Home() {
   const { offers, addOffer } = useOfferStore();
-
+  const handleQQClick = (e: React.MouseEvent) => {
+    const uin = "您的QQ号"; // 替换为真实 QQ
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    
+    // 手机端协议
+    const mobileLink = `mqqwpa://im/chat?chat_type=wpa&uin=${uin}&version=1&src_type=web&web_src=oicqzone.com`;
+    // PC 端协议
+    const pcLink = `tencent://message/?uin=${uin}&Site=niyabox.cc&Menu=yes`;
+    
+    window.location.href = isMobile ? mobileLink : pcLink;
+  };
   // 处理一键加载示例数据
   const handleLoadDemo = () => {
     // 为防止重复点击，先判断是否已经有数据
@@ -160,10 +170,15 @@ export default function Home() {
       
       {/* QQ 联系 - 替换为您的真实QQ号 */}
       <a 
-        href="tencent://message/?uin=1040035659&Site=niyabox.cc&Menu=yes" 
+        href="#" 
+        onClick={(e) => {
+          e.preventDefault();
+          navigator.clipboard.writeText("1040035659");
+          alert("QQ号已复制，快去添加好友吧！");
+        }}
         className="flex items-center gap-2 hover:text-indigo-600 transition-colors"
       >
-        <span className="text-base">🐧</span> QQ 联系
+        <span className="text-base">🐧</span> QQ: 您的QQ号 (点击复制)
       </a>
 
       {/* GitHub Issue */}
