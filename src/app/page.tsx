@@ -10,24 +10,14 @@ import OfferList from '@/components/forms/OfferList';
 import ComparisonChart from '@/components/charts/ComparisonChart';
 import DetailedComparison from '@/components/forms/DetailedComparison';
 import AIAdvice from '@/components/AIAdvice';
+import SharePoster from '@/components/SharePoster';
 
 // 导入图标
 import { Sparkles, BarChart3, TrendingUp, Info } from 'lucide-react';
-import SharePoster from '@/components/SharePoster';
 
 export default function Home() {
   const { offers, addOffer } = useOfferStore();
-  const handleQQClick = (e: React.MouseEvent) => {
-    const uin = "您的QQ号"; // 替换为真实 QQ
-    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-    
-    // 手机端协议
-    const mobileLink = `mqqwpa://im/chat?chat_type=wpa&uin=${uin}&version=1&src_type=web&web_src=oicqzone.com`;
-    // PC 端协议
-    const pcLink = `tencent://message/?uin=${uin}&Site=niyabox.cc&Menu=yes`;
-    
-    window.location.href = isMobile ? mobileLink : pcLink;
-  };
+
   // 处理一键加载示例数据
   const handleLoadDemo = () => {
     // 为防止重复点击，先判断是否已经有数据
@@ -117,7 +107,7 @@ export default function Home() {
               <DetailedComparison />
             </div>
 
-            {/* 新增：分享海报按钮 */}
+            {/* 分享海报按钮 */}
             <SharePoster />
             
             {/* AI 建议区域 */}
@@ -125,89 +115,89 @@ export default function Home() {
           </div>
         </div>
 
-        {/* 底部版权/链接 */}
-{/* 底部版权与反馈区 */}
-<footer className="mt-24 pb-12 border-t border-slate-200 pt-12">
-  <div className="flex flex-col items-center space-y-8">
-    
-    {/* 1. 实时访问统计看板 */}
-    <div className="flex flex-col items-center gap-3">
-      <p className="text-slate-400 text-[10px] font-black uppercase tracking-[0.2em]">
-        Platform Statistics
-      </p>
-      <div className="flex items-center gap-2 bg-white px-4 py-2 rounded-2xl shadow-sm border border-slate-100">
-        <img 
-          src="https://visitor-badge.laobi.icu/badge?page_id=niyabox.cc&left_text=Total%20Users&color=4f46e5" 
-          alt="Visitors"
-          className="h-5"
-        />
-        <img 
-          src="https://visitor-badge.laobi.icu/badge?page_id=niyabox.cc&history=7" 
-          alt="Trend"
-          className="h-5"
-        />
-      </div>
-    </div>
+        {/* 底部版权与反馈区 */}
+        <footer className="mt-24 pb-12 border-t border-slate-200 pt-12">
+          <div className="flex flex-col items-center space-y-8">
+            
+            {/* 1. 实时访问统计看板 */}
+            <div className="flex flex-col items-center gap-3">
+              <p className="text-slate-400 text-[10px] font-black uppercase tracking-[0.2em]">
+                Platform Statistics
+              </p>
+              <div className="flex items-center gap-2 bg-white px-4 py-2 rounded-2xl shadow-sm border border-slate-100">
+                <img 
+                  src="https://visitor-badge.laobi.icu/badge?page_id=niyabox.cc&left_text=Total%20Users&color=4f46e5" 
+                  alt="Visitors"
+                  className="h-5"
+                />
+                <img 
+                  src="https://visitor-badge.laobi.icu/badge?page_id=niyabox.cc&history=7" 
+                  alt="Trend"
+                  className="h-5"
+                />
+              </div>
+            </div>
 
-    {/* 2. 品牌标识 */}
-    <div className="text-center">
-      <h3 className="text-xl font-black text-slate-800 tracking-tight">
-        Offer<span className="text-indigo-600">Vision</span>
-      </h3>
-      <p className="text-slate-500 text-xs mt-1 font-medium">
-      </p>
-    </div>
+            {/* 2. 品牌标识 */}
+            <div className="text-center">
+              <h3 className="text-xl font-black text-slate-800 tracking-tight">
+                Offer<span className="text-indigo-600">Vision</span>
+              </h3>
+              <p className="text-slate-500 text-xs mt-1 font-medium">
+                基于 AI 的职场财务价值深度诊断工具
+              </p>
+            </div>
 
-    {/* 3. 反馈与联系链接 */}
-    <div className="flex flex-wrap justify-center gap-x-8 gap-y-4 text-[11px] font-bold text-slate-500 uppercase tracking-tight">
-      {/* 邮件反馈 */}
-      <a 
-        href="mailto:kunmeigo@gmail.com?subject=OfferVision反馈" 
-        className="flex items-center gap-2 hover:text-indigo-600 transition-colors"
-      >
-        <span className="text-base">📩</span> 意见反馈
-      </a>
-      
-      {/* QQ 联系 - 替换为您的真实QQ号 */}
-      <a 
-        href="#" 
-        onClick={(e) => {
-          e.preventDefault();
-          navigator.clipboard.writeText("1040035659");
-          alert("QQ号已复制，快去添加好友吧！");
-        }}
-        className="flex items-center gap-2 hover:text-indigo-600 transition-colors"
-      >
-        <span className="text-base">🐧</span> QQ: 您的QQ号 (点击复制)
-      </a>
+            {/* 3. 反馈与联系链接 */}
+            <div className="flex flex-wrap justify-center gap-x-8 gap-y-4 text-[11px] font-bold text-slate-500 uppercase tracking-tight">
+              {/* 邮件反馈 */}
+              <a 
+                href="mailto:kunmeigo@gmail.com?subject=OfferVision反馈" 
+                className="flex items-center gap-2 hover:text-indigo-600 transition-colors"
+              >
+                <span className="text-base">📩</span> 意见反馈
+              </a>
+              
+              {/* QQ 联系 - 自动复制 */}
+              <a 
+                href="#" 
+                onClick={(e) => {
+                  e.preventDefault();
+                  navigator.clipboard.writeText("1040035659");
+                  alert("QQ号 1040035659 已复制，快去添加好友吧！");
+                }}
+                className="flex items-center gap-2 hover:text-indigo-600 transition-colors"
+              >
+                <span className="text-base">🐧</span> QQ: 1040035659 (点击复制)
+              </a>
 
-      {/* GitHub Issue */}
-      <a 
-        href="https://github.com/paipai121/offercomparator/issues" 
-        target="_blank" 
-        rel="noopener noreferrer" 
-        className="flex items-center gap-2 hover:text-indigo-600 transition-colors"
-      >
-        <span className="text-base">🛠️</span> 提交 Bug
-      </a>
+              {/* GitHub Issue */}
+              <a 
+                href="https://github.com/paipai121/offercomparator/issues" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="flex items-center gap-2 hover:text-indigo-600 transition-colors"
+              >
+                <span className="text-base">🛠️</span> 提交 Bug
+              </a>
 
-      {/* 开源仓库 */}
-      <a 
-        href="https://github.com/paipai121/offercomparator" 
-        target="_blank" 
-        rel="noopener noreferrer" 
-        className="flex items-center gap-2 hover:text-indigo-600 transition-colors"
-      >
-        <span className="text-base">⭐</span> GitHub Source
-      </a>
-    </div>
+              {/* 开源仓库 */}
+              <a 
+                href="https://github.com/paipai121/offercomparator" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="flex items-center gap-2 hover:text-indigo-600 transition-colors"
+              >
+                <span className="text-base">⭐</span> GitHub Source
+              </a>
+            </div>
 
-    {/* 4. 版权声明 */}
-    <p className="text-slate-300 text-[9px] font-bold uppercase tracking-[0.2em]">
-      © 2025 NIYABOX.CC | Quantifying Your Professional Value
-    </p>
-  </div>
-</footer>
+            {/* 4. 版权声明 */}
+            <p className="text-slate-300 text-[9px] font-bold uppercase tracking-[0.2em]">
+              © 2025 NIYABOX.CC | Quantifying Your Professional Value
+            </p>
+          </div>
+        </footer>
       </div>
     </main>
   );
