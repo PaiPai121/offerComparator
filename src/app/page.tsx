@@ -152,7 +152,7 @@ export default function Home() {
     <div className="flex flex-wrap justify-center gap-x-8 gap-y-4 text-[11px] font-bold text-slate-500 uppercase tracking-tight">
       {/* 邮件反馈 */}
       <a 
-        href="mailto:your-email@example.com?subject=OfferVision反馈" 
+        href="mailto:kunmeigo@gmail.com?subject=OfferVision反馈" 
         className="flex items-center gap-2 hover:text-indigo-600 transition-colors"
       >
         <span className="text-base">📩</span> 意见反馈
